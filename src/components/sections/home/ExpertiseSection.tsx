@@ -52,7 +52,7 @@ function expertiseStaggerClass(index: number) {
 export function ExpertiseSection() {
   return (
     <section className="mt-36 w-full">
-      <div className="w-full bg-primary text-secondary">
+      <div className="w-full bg-primary text-secondary py-10">
         <div className="mx-auto w-full max-w-[1280px] p-6 sm:p-10 lg:p-16">
         <header className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-xl space-y-4">

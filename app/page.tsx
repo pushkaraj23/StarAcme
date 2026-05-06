@@ -1,5 +1,6 @@
 import { ExpertiseSection } from "@/src/components/sections/home/ExpertiseSection";
 import { HomeHero } from "@/src/components/sections/home/HomeHero";
+import { MetricsSection } from "@/src/components/sections/home/MetricsSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <HomeHero />
       </div>
       <ExpertiseSection />
+      <MetricsSection />
     </main>
   );
 }

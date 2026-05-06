@@ -24,10 +24,10 @@ export function AboutSection() {
         </a>
 
         <div className="mt-auto">
-          <div className="mt-10 flex items-center gap-4">
-            <span className="h-7 w-7 rounded-full border border-secondary/85 bg-transparent" />
-            <span className="h-7 w-7 rounded-full bg-accent" />
-            <span className="h-7 w-7 rounded-full bg-accent" />
+          <div className="mt-10 flex items-center gap-3">
+            <span className="h-6 w-6 rounded-full border border-secondary/85 bg-transparent" />
+            <span className="h-6 w-6 rounded-full bg-accent" />
+            <span className="h-6 w-6 rounded-full bg-accent" />
           </div>
         </div>
       </article>
