@@ -1,32 +1,20 @@
 import Image from "next/image";
+import Link from "next/link";
+import { EXPERT_SERVICES } from "@/src/data/services";
 
-const services = [
-  {
-    title: "Reward & Engagement Programs",
-    description:
-      "For stronger engagement, improved performance, and building lasting loyalty across teams, channels, and key stakeholders.",
-    image: "/graphics/home/service1.svg",
-    dark: false,
-  },
-  {
-    title: "Integrated Business Reporting",
-    description:
-      "For transforming field force activity and operational data into real-time visibility, driving faster decisions, stronger accountability, and clearer performance insights.",
-    image: "/graphics/home/service2.svg",
-    dark: false,
-  },
-  {
-    title: "Workflow Automation Programs",
-    description:
-      "For improved efficiency, eliminate repetitive manual work and reduce manual follow-ups by replacing them with streamlined digital workflows.",
-    image: "/graphics/home/service3.svg",
-    dark: true,
-  },
-];
+function serviceCardSurface(index: number, dark: boolean) {
+  if (dark) {
+    return "border border-secondary/12 bg-primary text-secondary testimonial-card-dark-solid";
+  }
+  if (index === 1) {
+    return "liquid-glass liquid-glass-readable testimonial-unified-drop testimonial-glass-muted text-primary";
+  }
+  return "liquid-glass liquid-glass-readable testimonial-unified-drop testimonial-glass-light text-primary";
+}
 
 export function ServicesSection() {
   return (
-    <section className="mt-36">
+    <section id="expert-services" className="mt-36 scroll-mt-28">
       <div className="text-center">
         <p className="text-base font-medium text-accent">Our Expert Services</p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
@@ -35,16 +23,11 @@ export function ServicesSection() {
       </div>
 
       <div className="mt-9 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {services.map((service, index) => (
-          <article
-            key={service.title}
-            className={`flex min-h-[560px] flex-col justify-center rounded-[30px] border px-6 py-8 shadow-[var(--shadow-soft)] ${
-              service.dark
-                ? "border-primary/30 bg-primary text-secondary"
-                : index === 1
-                  ? "border-primary/10 bg-primary/12 text-primary"
-                  : "border-secondary/65 bg-secondary/28 text-primary"
-            }`}
+        {EXPERT_SERVICES.map((service, index) => (
+          <Link
+            key={service.slug}
+            href={`/services/${service.slug}`}
+            className={`group flex min-h-[560px] flex-col justify-center rounded-[30px] px-6 py-8 transition-transform duration-300 hover:scale-[1.01] ${serviceCardSurface(index, service.dark)}`}
           >
             <div className={`flex justify-center ${index === 1 ? "order-2 mt-5" : ""}`}>
               <Image
@@ -66,7 +49,12 @@ export function ServicesSection() {
             >
               {service.description}
             </p>
-          </article>
+            <p
+              className={`mt-6 text-sm font-semibold ${service.dark ? "text-accent" : "text-accent group-hover:underline"}`}
+            >
+              View details →
+            </p>
+          </Link>
         ))}
       </div>
     </section>
