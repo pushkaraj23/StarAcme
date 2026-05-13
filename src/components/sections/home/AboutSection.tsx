@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function AboutSection() {
   return (
@@ -15,13 +16,13 @@ export function AboutSection() {
           disconnected tools, and manual follow-ups, costs you more than what you save.
         </p>
 
-        <a
-          href="#"
-          className="mt-6 inline-flex w-fit items-center gap-2 self-start border-b border-secondary/60 pb-2 text-xl font-semibold leading-none hover:opacity-80"
+        <Link
+          href="/about"
+          className="mt-6 inline-flex w-fit items-center gap-2 self-start border-b border-secondary/60 pb-2 text-xl font-semibold leading-none transition-opacity hover:opacity-80"
         >
           Learn More
-          <span>→</span>
-        </a>
+          <span aria-hidden>→</span>
+        </Link>
 
         <div className="mt-auto">
           <div className="mt-10 flex items-center gap-3">

@@ -3,6 +3,6 @@ export const NAV_ITEMS = [
   "Solutions",
   "Projects",
   "About",
-  "Testimonials",
+  // "Testimonials",
   "Careers",
 ];

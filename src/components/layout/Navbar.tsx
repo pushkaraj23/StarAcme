@@ -18,6 +18,9 @@ import { EXPERT_SERVICES } from "@/src/data/services";
 const NAV_HREF: Record<string, string> = {
   Home: "/",
   Projects: "/projects",
+  About: "/about",
+  Testimonials: "/testimonials",
+  Careers: "/careers",
 };
 
 function getNavHref(item: string) {
@@ -29,6 +32,9 @@ function useIsActive() {
   return (item: string) => {
     if (item === "Home") return pathname === "/";
     if (item === "Projects") return pathname.startsWith("/projects");
+    if (item === "About") return pathname.startsWith("/about");
+    if (item === "Testimonials") return pathname.startsWith("/testimonials");
+    if (item === "Careers") return pathname.startsWith("/careers");
     return false;
   };
 }
@@ -265,7 +271,10 @@ export function Navbar() {
             className="w-full rounded-2xl border border-white/60 bg-secondary/90 p-4 shadow-[0_24px_56px_rgba(55,55,55,0.18),0_0_0_1px_rgba(255,255,255,0.5)] backdrop-blur-2xl"
           >
             <div className="grid grid-cols-3 gap-3">
-              {EXPERT_SERVICES.map((s) => (
+              {EXPERT_SERVICES.map((s) => {
+                const isLiquidGlassMiddle =
+                  !s.dark && s.slug === "integrated-business-reporting";
+                return (
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
@@ -274,7 +283,9 @@ export function Navbar() {
                   className={`group flex flex-col rounded-xl p-4 transition-all duration-200 hover:scale-[1.015] ${
                     s.dark
                       ? "bg-primary text-secondary hover:bg-primary/90"
-                      : "bg-white/70 text-primary hover:bg-white/95"
+                      : isLiquidGlassMiddle
+                        ? "liquid-glass liquid-glass-readable testimonial-unified-drop testimonial-glass-muted text-primary hover:brightness-[1.02]"
+                        : "bg-white/70 text-primary hover:bg-white/95"
                   }`}
                 >
                   <div className="flex justify-center">
@@ -306,7 +317,8 @@ export function Navbar() {
                     View details →
                   </span>
                 </Link>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
           </div>
